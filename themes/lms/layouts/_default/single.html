@@ -1,0 +1,97 @@
+{{ define "main" }}
+<div class="container py-5">
+    {{ if eq .Type "courses" }}
+    <div class="course-container">
+        <!-- Video Player Section -->
+        <div class="video-section">
+            <div class="video-player">
+                {{ with .Params.sections }}
+                    {{ range first 1 . }}
+                        {{ range first 1 .lessons }}
+                            {{ partial "video-player.html" (dict "video_id" .video_id) }}
+                        {{ end }}
+                    {{ end }}
+                {{ end }}
+            </div>
+            
+            <h1 class="video-title mt-4">{{ .Title }}</h1>
+            
+            <!-- Description Section -->
+            <div class="description-section mt-4">
+                <h3>About this course</h3>
+                <div class="course-description">
+                    {{ .Content }}
+                </div>
+            </div>
+            
+            <!-- Resources Section -->
+            {{ with .Params.resources }}
+            <div class="resources-section mt-4">
+                <h3>Resources</h3>
+                <div class="resources-list">
+                    {{ range . }}
+                    <div class="resource-item">
+                        <a href="{{ .url }}" class="btn btn-outline-primary" download>
+                            {{ .title }}
+                        </a>
+                    </div>
+                    {{ end }}
+                </div>
+            </div>
+            {{ end }}
+            
+            <!-- Comments Section -->
+            <div class="comments-section mt-4">
+                <h3>Discussion</h3>
+                <div id="comments">
+                    <!-- Comments will be loaded dynamically -->
+                </div>
+            </div>
+        </div>
+        
+        <!-- Course Navigation -->
+        <div class="course-navigation">
+            <div class="progress-indicator mb-3">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" style="width: 0%" id="courseProgress"></div>
+                </div>
+                <small class="text-muted">Course Progress</small>
+            </div>
+            
+            <div class="section-list">
+                {{ range .Params.sections }}
+                <div class="section-item">
+                    <div class="section-header" data-bs-toggle="collapse" data-bs-target="#section-{{ .title | urlize }}">
+                        <h4>{{ .title }}</h4>
+                        <span class="duration">{{ .duration }}</span>
+                    </div>
+                    
+                    <div class="collapse show" id="section-{{ .title | urlize }}">
+                        <ul class="lesson-list">
+                            {{ range .lessons }}
+                            <li class="lesson-item" data-video-id="{{ .video_id }}">
+                                <span class="lesson-title">{{ .title }}</span>
+                                <span class="lesson-duration">{{ .duration }}</span>
+                            </li>
+                            {{ end }}
+                        </ul>
+                    </div>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+    {{ else }}
+    <article class="content">
+        <h1>{{ .Title }}</h1>
+        {{ .Content }}
+    </article>
+    {{ end }}
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script>
+    // Course progress tracking will be implemented in main.js
+</script>
+{{ end }}

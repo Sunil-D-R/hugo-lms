@@ -1,0 +1,12 @@
+name = "Hugo LMS"
+license = "MIT"
+licenselink = "https://github.com/yourusername/hugo-lms/blob/master/LICENSE"
+description = "A modern Learning Management System theme for Hugo"
+homepage = "https://github.com/yourusername/hugo-lms"
+tags = ["lms", "education", "courses", "learning"]
+features = ["course-management", "video-player", "responsive"]
+min_version = "0.80.0"
+
+[author]
+  name = "Your Name"
+  homepage = "https://yourwebsite.com"
