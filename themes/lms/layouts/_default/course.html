@@ -2,19 +2,23 @@
 <div class="container mx-auto px-4 py-8">
     <!-- Course Header -->
     <div class="mb-8">
-        <h1 class="text-4xl font-bold text-gray-900 mb-4">Directory Website Creation Tutorial</h1>
-        <p class="text-lg text-gray-600">Learn how to build a scalable directory website step by step</p>
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">{{ .Title }}</h1>
+        <p class="text-lg text-gray-600">{{ .Description }}</p>
+    </div>
+
+    <!-- Learning Summary -->
+    <div class="bg-gray-50 rounded-lg p-6 mb-8">
+        <div class="prose max-w-none">
+            {{ .Content }}
+        </div>
     </div>
 
     <!-- Main Content Grid -->
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Video Section -->
         <div class="lg:col-span-2">
-            <div class="bg-gray-100 rounded-lg aspect-video mb-6">
-                <!-- Replace with actual video embed -->
-                <div class="w-full h-full flex items-center justify-center">
-                    <span class="text-gray-500">Video Player</span>
-                </div>
+            <div class="bg-gray-900 rounded-lg aspect-video mb-6">
+                <div id="player" class="w-full h-full"></div>
             </div>
         </div>
 
@@ -22,31 +26,28 @@
         <div class="lg:col-span-1">
             <div class="bg-white rounded-lg shadow-md p-6">
                 <h2 class="text-2xl font-semibold mb-4">Course Timeline</h2>
-                <div class="space-y-4">
-                    <!-- Introduction -->
-                    <div class="border-l-4 border-blue-500 pl-4">
+                <div class="space-y-4" id="timestamps">
+                    <div class="border-l-4 border-blue-500 pl-4 cursor-pointer" data-time="0">
                         <div class="flex items-start">
                             <span class="text-blue-600 font-mono">00:00</span>
                             <div class="ml-4">
                                 <h3 class="font-semibold text-gray-900">📚 Introduction and Video Objective</h3>
-                                <p class="text-sm text-gray-600 mt-1">Overview of the video's focus: step-by-step tutorial on creating a directory website.</p>
+                                <p class="text-sm text-gray-600 mt-1">Overview and tools introduction</p>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Managing Costs -->
-                    <div class="border-l-4 border-green-500 pl-4">
+                    
+                    <div class="border-l-4 border-green-500 pl-4 cursor-pointer" data-time="71">
                         <div class="flex items-start">
                             <span class="text-green-600 font-mono">01:11</span>
                             <div class="ml-4">
-                                <h3 class="font-semibold text-gray-900">💰 Managing Costs and Google Cloud Credits</h3>
-                                <p class="text-sm text-gray-600 mt-1">Guidance on starting with Google Cloud's $200 free credit.</p>
+                                <h3 class="font-semibold text-gray-900">💰 Managing Costs</h3>
+                                <p class="text-sm text-gray-600 mt-1">Google Cloud credits and cost management</p>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Keyword and Location -->
-                    <div class="border-l-4 border-purple-500 pl-4">
+                    <div class="border-l-4 border-purple-500 pl-4 cursor-pointer" data-time="180">
                         <div class="flex items-start">
                             <span class="text-purple-600 font-mono">03:00</span>
                             <div class="ml-4">
@@ -56,8 +57,7 @@
                         </div>
                     </div>
 
-                    <!-- Google Cloud Setup -->
-                    <div class="border-l-4 border-yellow-500 pl-4">
+                    <div class="border-l-4 border-yellow-500 pl-4 cursor-pointer" data-time="466">
                         <div class="flex items-start">
                             <span class="text-yellow-600 font-mono">07:46</span>
                             <div class="ml-4">
@@ -67,8 +67,7 @@
                         </div>
                     </div>
 
-                    <!-- Caching Setup -->
-                    <div class="border-l-4 border-red-500 pl-4">
+                    <div class="border-l-4 border-red-500 pl-4 cursor-pointer" data-time="670">
                         <div class="flex items-start">
                             <span class="text-red-600 font-mono">11:10</span>
                             <div class="ml-4">
@@ -78,8 +77,7 @@
                         </div>
                     </div>
 
-                    <!-- Building Website -->
-                    <div class="border-l-4 border-indigo-500 pl-4">
+                    <div class="border-l-4 border-indigo-500 pl-4 cursor-pointer" data-time="846">
                         <div class="flex items-start">
                             <span class="text-indigo-600 font-mono">14:03</span>
                             <div class="ml-4">
@@ -89,8 +87,7 @@
                         </div>
                     </div>
 
-                    <!-- Debugging -->
-                    <div class="border-l-4 border-pink-500 pl-4">
+                    <div class="border-l-4 border-pink-500 pl-4 cursor-pointer" data-time="1406">
                         <div class="flex items-start">
                             <span class="text-pink-600 font-mono">23:26</span>
                             <div class="ml-4">
@@ -100,8 +97,7 @@
                         </div>
                     </div>
 
-                    <!-- Final Steps -->
-                    <div class="border-l-4 border-orange-500 pl-4">
+                    <div class="border-l-4 border-orange-500 pl-4 cursor-pointer" data-time="1751">
                         <div class="flex items-start">
                             <span class="text-orange-600 font-mono">29:11</span>
                             <div class="ml-4">
@@ -115,4 +111,37 @@
         </div>
     </div>
 </div>
+
+<!-- YouTube API -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '100%',
+            width: '100%',
+            videoId: '{{ .Params.video_id }}',
+            playerVars: {
+                'playsinline': 1,
+                'rel': 0
+            }
+        });
+    }
+
+    // Add click handlers for timestamps
+    document.addEventListener('DOMContentLoaded', function() {
+        const timestamps = document.querySelectorAll('#timestamps > div');
+        timestamps.forEach(timestamp => {
+            timestamp.addEventListener('click', function() {
+                const time = parseInt(this.dataset.time);
+                player.seekTo(time);
+                player.playVideo();
+            });
+        });
+    });
+</script>
 {{ end }}
