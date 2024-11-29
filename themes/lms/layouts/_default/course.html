@@ -1,0 +1,118 @@
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <!-- Course Header -->
+    <div class="mb-8">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">Directory Website Creation Tutorial</h1>
+        <p class="text-lg text-gray-600">Learn how to build a scalable directory website step by step</p>
+    </div>
+
+    <!-- Main Content Grid -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        <!-- Video Section -->
+        <div class="lg:col-span-2">
+            <div class="bg-gray-100 rounded-lg aspect-video mb-6">
+                <!-- Replace with actual video embed -->
+                <div class="w-full h-full flex items-center justify-center">
+                    <span class="text-gray-500">Video Player</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Timestamps Section -->
+        <div class="lg:col-span-1">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-2xl font-semibold mb-4">Course Timeline</h2>
+                <div class="space-y-4">
+                    <!-- Introduction -->
+                    <div class="border-l-4 border-blue-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-blue-600 font-mono">00:00</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">📚 Introduction and Video Objective</h3>
+                                <p class="text-sm text-gray-600 mt-1">Overview of the video's focus: step-by-step tutorial on creating a directory website.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Managing Costs -->
+                    <div class="border-l-4 border-green-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-green-600 font-mono">01:11</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">💰 Managing Costs and Google Cloud Credits</h3>
+                                <p class="text-sm text-gray-600 mt-1">Guidance on starting with Google Cloud's $200 free credit.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Keyword and Location -->
+                    <div class="border-l-4 border-purple-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-purple-600 font-mono">03:00</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">🔑 Keyword and Location Preparation</h3>
+                                <p class="text-sm text-gray-600 mt-1">Generating a CSV file for keywords and locations using Google Sheets.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Google Cloud Setup -->
+                    <div class="border-l-4 border-yellow-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-yellow-600 font-mono">07:46</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">🌐 Setting Up Google Cloud and APIs</h3>
+                                <p class="text-sm text-gray-600 mt-1">Instructions for enabling APIs on Google Cloud.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Caching Setup -->
+                    <div class="border-l-4 border-red-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-red-600 font-mono">11:10</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">💾 Caching Setup with MongoDB</h3>
+                                <p class="text-sm text-gray-600 mt-1">Explanation of caching to minimize API costs and optimize performance.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Building Website -->
+                    <div class="border-l-4 border-indigo-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-indigo-600 font-mono">14:03</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">🛠️ Building the Directory Website</h3>
+                                <p class="text-sm text-gray-600 mt-1">Crafting prompts for generating programmatic pages using CSV data.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Debugging -->
+                    <div class="border-l-4 border-pink-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-pink-600 font-mono">23:26</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">🖥️ Debugging and Refining the Website</h3>
+                                <p class="text-sm text-gray-600 mt-1">Resolving CSS and TypeScript issues during the build process.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Final Steps -->
+                    <div class="border-l-4 border-orange-500 pl-4">
+                        <div class="flex items-start">
+                            <span class="text-orange-600 font-mono">29:11</span>
+                            <div class="ml-4">
+                                <h3 class="font-semibold text-gray-900">🚀 Final Steps and Deployment Guide</h3>
+                                <p class="text-sm text-gray-600 mt-1">Instructions for pushing the project to GitHub and deploying on Vercel.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{ end }}
