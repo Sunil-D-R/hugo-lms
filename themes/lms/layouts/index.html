@@ -31,7 +31,7 @@
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {{ range where .Site.RegularPages "Type" "courses" }}
-        <article class="course-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200" data-categories="{{ delimit .Params.categories "," }}">
+        <article class="course-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200" data-categories="{{ with .Params.categories }}{{ delimit . "," }}{{ end }}">
             <div class="relative pb-[56.25%]">
                 {{ with .Params.thumbnail }}
                     <img src="{{ . }}" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover rounded-t-lg" loading="lazy">
