@@ -6,7 +6,8 @@
         "description": {{ $page.Description | jsonify }},
         "permalink": {{ $page.Permalink | jsonify }},
         "thumbnail": {{ with $page.Params.thumbnail }}{{ . | jsonify }}{{ else }}""{{ end }},
-        "categories": {{ with $page.Params.categories }}{{ . | jsonify }}{{ else }}[]{{ end }}
+        "categories": {{ with $page.Params.categories }}{{ . | jsonify }}{{ else }}[]{{ end }},
+        "tags": {{ with $page.Params.tags }}{{ . | jsonify }}{{ else }}[]{{ end }}
     }
     {{- end -}}
 ]
