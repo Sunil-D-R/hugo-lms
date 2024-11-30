@@ -34,9 +34,9 @@
         <article class="course-card bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200" data-categories="{{ with .Params.categories }}{{ delimit . "," }}{{ end }}">
             <div class="relative pb-[56.25%]">
                 {{ with .Params.thumbnail }}
-                    <img src="{{ . }}" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover rounded-t-lg" loading="lazy">
+                    <img src="{{ absURL . }}" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover rounded-t-lg" loading="lazy">
                 {{ else }}
-                    <img src="/images/default-course.jpg" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover rounded-t-lg" loading="lazy">
+                    <img src="{{ absURL "/images/default-course.jpg" }}" alt="{{ $.Title }}" class="absolute inset-0 w-full h-full object-cover rounded-t-lg" loading="lazy">
                 {{ end }}
             </div>
             <div class="p-4">

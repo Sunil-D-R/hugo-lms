@@ -4,7 +4,7 @@
 <!-- Get courses that share categories -->
 {{ range .Params.categories }}
     {{ $category := . }}
-    {{ range where $currentPage.Site.RegularPages "Type" "courses" }}
+    {{ range where $currentPage.Site.RegularPages "Section" "courses" }}
         {{ if and (ne $currentPage.RelPermalink .RelPermalink) (in .Params.categories $category) }}
             {{ $relatedCourses = $relatedCourses | append . }}
         {{ end }}
@@ -14,7 +14,7 @@
 <!-- Get courses that share tags -->
 {{ range .Params.tags }}
     {{ $tag := . }}
-    {{ range where $currentPage.Site.RegularPages "Type" "courses" }}
+    {{ range where $currentPage.Site.RegularPages "Section" "courses" }}
         {{ if and (ne $currentPage.RelPermalink .RelPermalink) (in .Params.tags $tag) }}
             {{ $relatedCourses = $relatedCourses | append . }}
         {{ end }}

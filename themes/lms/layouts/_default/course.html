@@ -46,7 +46,7 @@
                 <!-- Sticky Video Section -->
                 <div class="sticky top-4">
                     <div class="bg-gray-900 rounded-lg aspect-video">
-                        <div id="player" class="w-full h-full"></div>
+                        <div id="player"></div>
                     </div>
                 </div>
             </div>
@@ -76,6 +76,9 @@
                             </div>
                             {{ end }}
                         </div>
+
+                        <!-- Related Courses Section -->
+                        {{ partial "related-courses" . }}
                     </div>
                 </div>
             </div>
@@ -108,8 +111,7 @@
     }
 
     function onPlayerReady(event) {
-        // Player is ready
-        console.log('Player is ready');
+        // Video is ready to play
     }
 
     // Add click handlers for timestamps
@@ -117,9 +119,8 @@
         const timestamps = document.querySelectorAll('#timestamps > div');
         timestamps.forEach(timestamp => {
             timestamp.addEventListener('click', function() {
-                const time = parseInt(this.dataset.time);
+                const time = parseFloat(this.dataset.time);
                 player.seekTo(time);
-                player.playVideo();
             });
         });
     });
