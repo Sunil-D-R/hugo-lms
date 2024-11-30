@@ -1,6 +1,6 @@
 baseURL = "http://example.org/"
 languageCode = "en-us"
-title = "My LMS Platform"
+title = "LMS Platform"
 theme = "lms"
 
 [params]
@@ -25,14 +25,6 @@ theme = "lms"
     url = "/courses/"
     weight = 2
   [[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 3
-  [[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 4
-  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 5
+    weight = 3
