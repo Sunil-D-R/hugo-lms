@@ -117,17 +117,43 @@ The theme supports custom newsletter integration through the `params.newsletter.
 
 To use a custom newsletter form:
 
-1. Get the embed code from your newsletter service
-2. Add it to your `config.toml`:
+1. Get the embed code from your newsletter service (e.g., Mailchimp, ConvertKit)
+2. Open your site's `config.toml` file
+3. Add your custom form code under the newsletter section:
    ```toml
    [params.newsletter]
      enabled = true
      customCode = '''
-     <!-- Your newsletter embed code here -->
+     <!-- Replace this with your form code -->
+     <form action="https://your-form-endpoint.com" method="post" class="space-y-3">
+       <input type="email" name="email" placeholder="Your email" class="w-full px-4 py-2 rounded">
+       <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded">Subscribe</button>
+     </form>
      '''
    ```
 
-If `customCode` is empty, the theme will use its default form styling.
+Example with Mailchimp:
+```toml
+[params.newsletter]
+  enabled = true
+  customCode = '''
+  <!-- Replace with your Mailchimp form code -->
+  <div id="mc_embed_signup">
+    <form action="https://your-account.us1.list-manage.com/subscribe/post?u=XXXXX&amp;id=XXXXX" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
+      <div id="mc_embed_signup_scroll">
+        <div class="mc-field-group">
+          <input type="email" name="EMAIL" class="required email w-full px-4 py-2 border rounded" id="mce-EMAIL" placeholder="Enter your email">
+        </div>
+        <div class="clear">
+          <button type="submit" class="w-full mt-3 px-4 py-2 bg-primary-600 text-white rounded">Subscribe</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  '''
+```
+
+Note: The custom form code will completely replace the default form. You can use Tailwind CSS classes to style your custom form to match the theme's design.
 
 #### Course Navigation
 - Clean and intuitive course navigation
