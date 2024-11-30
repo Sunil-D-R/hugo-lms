@@ -1,0 +1,13 @@
+[
+    {{- range $index, $page := where .Site.RegularPages "Type" "courses" -}}
+    {{- if $index -}},{{- end }}
+    {
+        "title": {{ $page.Title | jsonify }},
+        "description": {{ $page.Description | jsonify }},
+        "permalink": {{ $page.Permalink | jsonify }},
+        "thumbnail": {{ with $page.Params.thumbnail }}{{ . | jsonify }}{{ else }}""{{ end }},
+        "categories": {{ with $page.Params.categories }}{{ . | jsonify }}{{ else }}[]{{ end }},
+        "tags": {{ with $page.Params.tags }}{{ . | jsonify }}{{ else }}[]{{ end }}
+    }
+    {{- end -}}
+]

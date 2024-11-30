@@ -134,6 +134,70 @@ The footer is built using Tailwind CSS and can be customized in several ways:
     └── Social Links
 ```
 
+## Search Functionality
+
+The theme includes a powerful search feature that allows users to search through courses, categories, and tags:
+
+### Features
+
+- Real-time search as you type
+- Search through course titles, descriptions, categories, and tags
+- Clickable categories and tags in search results
+- Shows course thumbnails and descriptions in results
+- Displays the number of courses for each category/tag
+
+### Configuration
+
+The search functionality is automatically configured when you use the theme. Make sure your courses have proper front matter:
+
+```yaml
+---
+title: "Course Title"
+description: "Course description"
+categories: ["Web Development", "JavaScript"]
+tags: ["frontend", "react", "beginner"]
+thumbnail: "/images/course-thumbnail.jpg"
+---
+```
+
+## Categories and Tags
+
+The theme provides a clean and organized way to browse courses by categories and tags:
+
+### Features
+
+- Dedicated pages for categories (`/categories/`) and tags (`/tags/`)
+- Individual category pages (e.g., `/categories/web-development/`)
+- Individual tag pages (e.g., `/tags/javascript/`)
+- Shows course count for each category/tag
+- Responsive grid layout for course listings
+- Cross-navigation between categories and tags
+
+### Configuration
+
+1. Define taxonomies in your `config.toml`:
+
+```toml
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+```
+
+2. Add categories and tags to your course front matter:
+
+```yaml
+---
+categories: ["Web Development", "JavaScript"]
+tags: ["frontend", "react", "beginner"]
+---
+```
+
+3. Categories and tags will automatically appear in:
+   - The main navigation menu
+   - Course pages
+   - Search results
+   - Category and tag listing pages
+
 ## Creating Content
 
 Create a new course:
