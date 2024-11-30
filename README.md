@@ -7,12 +7,19 @@ A modern Learning Management System theme for Hugo static site generator.
 - 🎨 Modern, responsive design with Tailwind CSS
 - 📚 Course catalog with filtering
 - 📺 Video player integration
+  - Automatic playback on timestamp click
+  - YouTube player with minimal branding
+  - Interactive timestamp navigation
 - 📱 Mobile-friendly navigation
   - Responsive header with stacked layout on mobile
   - Categories and tags dropdown menu
   - Mobile menu with slide-in animation
 - 📊 Progress tracking
-- 🔍 Course search functionality
+- 🔍 Enhanced course search functionality
+  - Real-time search results
+  - Search by title, description, categories, and tags
+  - Visual tags and categories in search results
+  - Clean, modern search result layout
 - 🏷️ Course categorization and tagging
 - 📧 Newsletter subscription
 - 🎯 Clean, focused UI/UX
