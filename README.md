@@ -8,6 +8,9 @@ A modern Learning Management System theme for Hugo static site generator.
 - 📚 Course catalog with filtering
 - 📺 Video player integration
 - 📱 Mobile-friendly navigation
+  - Responsive header with stacked layout on mobile
+  - Categories and tags dropdown menu
+  - Mobile menu with slide-in animation
 - 📊 Progress tracking
 - 🔍 Course search functionality
 - 🏷️ Course categorization and tagging
