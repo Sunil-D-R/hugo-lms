@@ -41,6 +41,16 @@ theme = "lms"
   description = "A modern learning management system"
   logo = "/images/logo.png"
 
+  # Newsletter Configuration
+  [params.newsletter]
+    enabled = true
+    # Custom newsletter HTML/JS code (optional)
+    # Leave empty to use default form
+    customCode = """
+    <!-- Your custom newsletter form HTML/JS here -->
+    <!-- Example: Mailchimp, ConvertKit, etc. -->
+    """
+
 [taxonomies]
   category = "categories"
   tag = "tags"
@@ -100,6 +110,24 @@ The theme includes a newsletter subscription form in the footer that you can int
 - Email input field
 - Subscribe button
 - Custom success/error messages
+
+### Newsletter Integration
+
+The theme supports custom newsletter integration through the `params.newsletter.customCode` parameter. You can paste any HTML/JS code from your newsletter service provider (like Mailchimp, ConvertKit, etc.) to replace the default form.
+
+To use a custom newsletter form:
+
+1. Get the embed code from your newsletter service
+2. Add it to your `config.toml`:
+   ```toml
+   [params.newsletter]
+     enabled = true
+     customCode = '''
+     <!-- Your newsletter embed code here -->
+     '''
+   ```
+
+If `customCode` is empty, the theme will use its default form styling.
 
 #### Course Navigation
 - Clean and intuitive course navigation

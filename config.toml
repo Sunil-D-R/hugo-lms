@@ -6,6 +6,12 @@ theme = "lms"
 [params]
   description = "A modern learning management system"
   logo = "/images/logo.png"
+  
+  [params.newsletter]
+    enabled = true
+    # Custom newsletter HTML/JS code
+    # Leave empty to use default form
+    customCode = ""
 
 [taxonomies]
   category = "categories"
@@ -21,10 +27,6 @@ theme = "lms"
     url = "/"
     weight = 1
   [[menu.main]]
-    name = "Courses"
-    url = "/courses/"
-    weight = 2
-  [[menu.main]]
     name = "About"
     url = "/about/"
-    weight = 3
+    weight = 2
