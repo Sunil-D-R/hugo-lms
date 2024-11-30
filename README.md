@@ -20,6 +20,8 @@ A modern Learning Management System theme for Hugo static site generator.
   - Search by title, description, categories, and tags
   - Visual tags and categories in search results
   - Clean, modern search result layout
+  - Scrollable results with custom styling
+  - Smart scroll behavior within results
 - 🏷️ Course categorization and tagging
 - 📧 Newsletter subscription
 - 🎯 Clean, focused UI/UX
