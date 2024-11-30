@@ -1,215 +1,149 @@
 # Hugo LMS Theme
 
-A modern Learning Management System theme for Hugo static site generator.
+A modern, responsive Learning Management System theme for Hugo. Features include course management, category organization, search functionality, and a mobile-friendly design.
 
 ## Features
 
-- 🎨 Modern, responsive design with Tailwind CSS
-- 📚 Course catalog with filtering
-- 📺 Video player integration
-  - Automatic playback on timestamp click
-  - YouTube player with minimal branding
-  - Interactive timestamp navigation
-- 📱 Mobile-friendly navigation
-  - Responsive header with stacked layout on mobile
-  - Categories and tags dropdown menu
-  - Mobile menu with slide-in animation
-- 📊 Progress tracking
-- 🔍 Enhanced course search functionality
-  - Real-time search results
-  - Search by title, description, categories, and tags
-  - Visual tags and categories in search results
-  - Clean, modern search result layout
-  - Scrollable results with custom styling
-  - Smart scroll behavior within results
-- 🏷️ Course categorization and tagging
-- 📧 Newsletter subscription
-- 🎯 Clean, focused UI/UX
+- 📱 Responsive design with mobile-first approach
+- 🔍 Real-time search functionality
+- 📚 Course catalog with categories and tags
+- 🎯 Clean and intuitive navigation
+- 🌙 Modern UI with Tailwind CSS
+- ⚡ Fast and lightweight
 
 ## Installation
 
+### Option 1: Add as a Git Submodule (Recommended)
+
 1. Create a new Hugo site:
-```bash
-hugo new site my-lms-site
-cd my-lms-site
-```
+   ```bash
+   hugo new site your-site-name
+   cd your-site-name
+   ```
 
 2. Add the theme as a git submodule:
-```bash
-git submodule add https://github.com/yourusername/hugo-lms.git themes/lms
-```
+   ```bash
+   git init
+   git submodule add https://github.com/yourusername/hugo-lms.git themes/lms
+   ```
 
-3. Configure your `config.toml`:
-```toml
-baseURL = "http://example.org/"
-languageCode = "en-us"
-title = "My LMS Platform"
-theme = "lms"
+3. Update your site's configuration. Create or modify `config.toml`:
+   ```toml
+   baseURL = "/"
+   languageCode = "en-us"
+   title = "Your Site Title"
+   theme = "lms"
 
-[params]
-  description = "A modern learning management system"
-  logo = "/images/logo.png"
+   [params]
+     # Optional logo path relative to static folder
+     logo = "images/your-logo.png"
 
-  # Newsletter Configuration
-  [params.newsletter]
-    enabled = true
-    # Custom newsletter HTML/JS code (optional)
-    # Leave empty to use default form
-    customCode = """
-    <!-- Your custom newsletter form HTML/JS here -->
-    <!-- Example: Mailchimp, ConvertKit, etc. -->
-    """
+   [menu]
+     [[menu.main]]
+       name = "Home"
+       url = "/"
+       weight = 1
+     [[menu.main]]
+       name = "Courses"
+       url = "/courses/"
+       weight = 2
+   ```
 
-[taxonomies]
-  category = "categories"
-  tag = "tags"
-  difficulty = "difficulties"
+### Option 2: Manual Installation
 
-[params.footer]
-  # About Section
-  about_title = "About Us"
-  about_description = "A modern learning platform providing high-quality courses in web development, programming, and data science."
-  
-  # Quick Links
-  quick_links_title = "Quick Links"
-  quick_links = [
-    { name = "Home", url = "/" },
-    { name = "Courses", url = "/" },
-    { name = "About", url = "/about" }
-  ]
-  
-  # Newsletter Section
-  newsletter_title = "Stay Updated"
-  newsletter_description = "Subscribe to get notified about new courses and learning resources."
-  
-  # Copyright Notice
-  copyright = "2024 Your Company. All rights reserved."
+1. Download the theme from GitHub
+2. Extract it to your site's `themes` directory
+3. Follow the configuration steps above
 
-## Creating New Courses
+## Content Structure
 
-Create a new course using Hugo's archetype system:
+### Course Pages
 
-```bash
-hugo new content/courses/your-course-name.md
-```
+Create course content in `content/courses/` with the following structure:
 
-This will generate a new course file with the following front matter:
-```yaml
-title: "Your Course Name"
-date: YYYY-MM-DD
-description: "A comprehensive course about Your Course Name"
-thumbnail: "/images/courses/your-course-name.jpg"
-video_id: ""  # YouTube video ID
-duration: "0 minutes"
-categories: ["Uncategorized"]  # Example: ["Web Development", "Programming"]
-tags: []  # Example: ["javascript", "react", "frontend"]
-timestamps:
-  - time: "00:00"
-    title: "Introduction"
-    description: "Course overview and objectives"
-```
-
-The theme will automatically:
-- Generate category and tag pages
-- Update the navigation menu
-- Include the course in search results
-- Display appropriate filtering options
-
-## Course Management
-
-### Adding a New Course
-
-1. Create a new course file in the `content/courses` directory:
-
-```bash
-hugo new courses/my-course.md
-```
-
-2. Add categories and tags to your course front matter:
-
-```yaml
+```markdown
 ---
-title: "My Course Title"
+title: "Course Title"
 date: 2024-01-01
-categories: ["Web Development", "JavaScript"]
-tags: ["frontend", "react"]
-difficulty: "intermediate"
-description: "Learn the fundamentals of web development"
+description: "Course description"
+categories: ["Category1", "Category2"]
+tags: ["tag1", "tag2"]
+draft: false
 ---
+
+Course content goes here...
 ```
+
+### Creating New Courses
+
+1. Use Hugo's archetype to create a new course:
+   ```bash
+   hugo new courses/my-new-course.md
+   ```
+
+2. Edit the front matter and content in the generated file.
+
+## Theme Customization
+
+### Styling
+
+The theme uses Tailwind CSS for styling. You can customize the design by:
+
+1. Creating a `assets/css/custom.css` file in your site
+2. Adding your custom styles
+3. Importing it in `config.toml`:
+   ```toml
+   [params]
+     customCSS = ["css/custom.css"]
+   ```
+
+### Layout
+
+To override any theme layout:
+
+1. Copy the original file from `themes/lms/layouts/` to your site's `layouts/` directory
+2. Modify the copied file as needed
+
+## Required Dependencies
+
+- Hugo Extended Version (for Tailwind CSS processing)
+- Node.js and npm (for development)
 
 ## Development
 
-This theme uses Tailwind CSS for styling. The Tailwind configuration file is located at `themes/lms/tailwind.config.js`.
+To work on the theme locally:
 
-### Features in Detail
-
-#### Newsletter Subscription
-The theme includes a newsletter subscription form in the footer that you can integrate with your preferred email service provider. The form is styled with Tailwind CSS and includes:
-- Email input field
-- Subscribe button
-- Custom success/error messages
-
-### Newsletter Integration
-
-The theme supports custom newsletter integration through the `params.newsletter.customCode` parameter. You can paste any HTML/JS code from your newsletter service provider (like Mailchimp, ConvertKit, etc.) to replace the default form.
-
-To use a custom newsletter form:
-
-1. Get the embed code from your newsletter service (e.g., Mailchimp, ConvertKit)
-2. Open your site's `config.toml` file
-3. Add your custom form code under the newsletter section:
-   ```toml
-   [params.newsletter]
-     enabled = true
-     customCode = '''
-     <!-- Replace this with your form code -->
-     <form action="https://your-form-endpoint.com" method="post" class="space-y-3">
-       <input type="email" name="email" placeholder="Your email" class="w-full px-4 py-2 rounded">
-       <button type="submit" class="w-full px-4 py-2 bg-blue-600 text-white rounded">Subscribe</button>
-     </form>
-     '''
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/hugo-lms.git
    ```
 
-Example with Mailchimp:
-```toml
-[params.newsletter]
-  enabled = true
-  customCode = '''
-  <!-- Replace with your Mailchimp form code -->
-  <div id="mc_embed_signup">
-    <form action="https://your-account.us1.list-manage.com/subscribe/post?u=XXXXX&amp;id=XXXXX" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank">
-      <div id="mc_embed_signup_scroll">
-        <div class="mc-field-group">
-          <input type="email" name="EMAIL" class="required email w-full px-4 py-2 border rounded" id="mce-EMAIL" placeholder="Enter your email">
-        </div>
-        <div class="clear">
-          <button type="submit" class="w-full mt-3 px-4 py-2 bg-primary-600 text-white rounded">Subscribe</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  '''
-```
-
-Note: The custom form code will completely replace the default form. You can use Tailwind CSS classes to style your custom form to match the theme's design.
-
-#### Course Navigation
-- Clean and intuitive course navigation
-- Responsive design that works on all devices
-- Quick access to course materials
-
-#### About Page
-The theme includes a styled about page template that supports:
-- Team member profiles with images
-- Mission statement
-- Platform features
-- Contact information
+2. Start Hugo server:
+   ```bash
+   hugo server --disableFastRender
+   ```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
 
 ## License
 
-This theme is released under the MIT license. See [LICENSE](./LICENSE) for more information.
+MIT License - Feel free to use this theme for your own projects.
+
+## Support
+
+For support, please:
+1. Check the documentation
+2. Search existing issues
+3. Create a new issue if needed
+
+## Credits
+
+- Built with [Hugo](https://gohugo.io/)
+- Styled with [Tailwind CSS](https://tailwindcss.com/)
+- Interactive elements powered by [Alpine.js](https://alpinejs.dev/)

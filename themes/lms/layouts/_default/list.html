@@ -20,7 +20,13 @@
                 <p class="course-description">{{ .Description }}</p>
                 <div class="course-meta">
                     <span class="duration">{{ .Params.duration }}</span>
-                    <span class="lessons">{{ .Params.lessons }} lessons</span>
+                    <span class="lessons">
+                        {{- if isset .Params "timestamps" -}}
+                            {{- len .Params.timestamps -}} lessons
+                        {{- else -}}
+                            0 lessons
+                        {{- end -}}
+                    </span>
                 </div>
                 {{ if .Params.progress }}
                 <div class="progress-bar">

@@ -76,9 +76,6 @@
                             </div>
                             {{ end }}
                         </div>
-
-                        <!-- Related Courses Section -->
-                        {{ partial "related-courses" . }}
                     </div>
                 </div>
             </div>
@@ -121,6 +118,7 @@
             timestamp.addEventListener('click', function() {
                 const time = parseFloat(this.dataset.time);
                 player.seekTo(time);
+                player.playVideo(); // Force video to play when timestamp is clicked
             });
         });
     });

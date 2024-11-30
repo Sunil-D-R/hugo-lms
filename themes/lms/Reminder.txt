@@ -1,0 +1,15 @@
+When confirmed changes are made: Make changes to files
+Create a commit with a descriptive message:
+bash
+CopyInsert
+git add .
+git commit -m "feat: description of what changed"
+Common commit message prefixes:
+
+feat: for new features
+fix: for bug fixes
+docs: for documentation changes
+style: for formatting changes
+refactor: for code restructuring
+test: for adding tests
+chore: for maintenance tasks
