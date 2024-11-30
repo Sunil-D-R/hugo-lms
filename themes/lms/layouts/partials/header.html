@@ -69,7 +69,7 @@
                         </div>
                     </div>
                     <!-- Search Results -->
-                    <div id="search-results" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50 hidden">
+                    <div id="search-results" class="absolute w-full mt-2 bg-white rounded-lg shadow-lg border border-gray-200 z-50 hidden max-h-[70vh] overflow-y-auto overscroll-contain">
                         <!-- Results will be dynamically inserted here -->
                     </div>
                 </div>
@@ -120,11 +120,43 @@
     </div>
 </header>
 
+<style>
+    #search-results {
+        scrollbar-width: thin;
+        scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+    }
+    #search-results::-webkit-scrollbar {
+        width: 6px;
+    }
+    #search-results::-webkit-scrollbar-track {
+        background: transparent;
+    }
+    #search-results::-webkit-scrollbar-thumb {
+        background-color: rgba(156, 163, 175, 0.5);
+        border-radius: 3px;
+    }
+    #search-results:hover {
+        scrollbar-color: rgba(156, 163, 175, 0.8) transparent;
+    }
+    #search-results::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(156, 163, 175, 0.8);
+    }
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const searchInput = document.getElementById('search-input');
     const searchResults = document.getElementById('search-results');
     let searchIndex = [];
+
+    // Prevent page scroll when hovering over results
+    searchResults.addEventListener('wheel', function(e) {
+        if (this.scrollHeight > this.clientHeight) {
+            e.preventDefault();
+            const delta = e.deltaY || e.detail || e.wheelDelta;
+            this.scrollTop += delta;
+        }
+    });
 
     // Fetch all course data
     fetch('/index.json')
