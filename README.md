@@ -85,6 +85,36 @@ theme = "lms"
   # Copyright Notice
   copyright = "2024 Your Company. All rights reserved."
 
+## Creating New Courses
+
+Create a new course using Hugo's archetype system:
+
+```bash
+hugo new content/courses/your-course-name.md
+```
+
+This will generate a new course file with the following front matter:
+```yaml
+title: "Your Course Name"
+date: YYYY-MM-DD
+description: "A comprehensive course about Your Course Name"
+thumbnail: "/images/courses/your-course-name.jpg"
+video_id: ""  # YouTube video ID
+duration: "0 minutes"
+categories: ["Uncategorized"]  # Example: ["Web Development", "Programming"]
+tags: []  # Example: ["javascript", "react", "frontend"]
+timestamps:
+  - time: "00:00"
+    title: "Introduction"
+    description: "Course overview and objectives"
+```
+
+The theme will automatically:
+- Generate category and tag pages
+- Update the navigation menu
+- Include the course in search results
+- Display appropriate filtering options
+
 ## Course Management
 
 ### Adding a New Course
