@@ -40,6 +40,98 @@ theme = "lms"
   category = "categories"
   tag = "tags"
   difficulty = "difficulties"
+
+[params.footer]
+  # About Section
+  about_title = "About Us"
+  about_description = "Your platform description here"
+  
+  # Quick Links
+  quick_links_title = "Quick Links"
+  quick_links = [
+    { name = "Home", url = "/" },
+    { name = "Courses", url = "/courses" },
+    { name = "About", url = "/about" }
+  ]
+  
+  # Contact Information
+  contact_title = "Contact"
+  contact_email = "contact@example.com"
+  contact_phone = "+1 234 567 890"
+  
+  # Social Media Links
+  social_links = [
+    { platform = "twitter", url = "https://twitter.com/youraccount" },
+    { platform = "github", url = "https://github.com/youraccount" }
+  ]
+  
+  # Copyright Notice
+  copyright = " 2024 Your Company. All rights reserved."
+
+## Footer Configuration
+
+The theme includes a customizable footer with three main sections: About Us, Quick Links, and Contact Information. You can configure the footer content in your `config.toml`:
+
+### Basic Configuration
+```toml
+[params.footer]
+  # About Section
+  about_title = "About Us"
+  about_description = "Your platform description here"
+  
+  # Quick Links
+  quick_links_title = "Quick Links"
+  quick_links = [
+    { name = "Home", url = "/" },
+    { name = "Courses", url = "/courses" },
+    { name = "About", url = "/about" }
+  ]
+  
+  # Contact Information
+  contact_title = "Contact"
+  contact_email = "contact@example.com"
+  contact_phone = "+1 234 567 890"
+  
+  # Social Media Links
+  social_links = [
+    { platform = "twitter", url = "https://twitter.com/youraccount" },
+    { platform = "github", url = "https://github.com/youraccount" }
+  ]
+  
+  # Copyright Notice
+  copyright = " 2024 Your Company. All rights reserved."
+```
+
+### Customizing the Footer
+The footer is built using Tailwind CSS and can be customized in several ways:
+
+1. **Content Modification**
+   - Update the section titles and content through `config.toml`
+   - Add or remove quick links as needed
+   - Customize social media links and platforms
+
+2. **Visual Customization**
+   - Edit `themes/lms/layouts/partials/footer.html` to modify the layout
+   - Adjust colors, spacing, and typography using Tailwind classes
+   - Modify the responsive behavior for different screen sizes
+
+3. **Social Icons**
+   - The theme includes built-in support for common social media icons
+   - Supported platforms: Twitter, GitHub, LinkedIn, YouTube
+   - Icons are automatically displayed based on the platform name in config
+
+### Example Footer Structure
+```
+├── About Us
+│   └── Platform description
+├── Quick Links
+│   ├── Home
+│   ├── Courses
+│   └── About
+└── Contact
+    ├── Email
+    ├── Phone
+    └── Social Links
 ```
 
 ## Creating Content
