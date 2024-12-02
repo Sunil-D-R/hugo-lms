@@ -3,6 +3,7 @@ title: "{{ replace .Name "-" " " | title }}"
 date: {{ .Date }}
 description: "A comprehensive course about {{ replace .Name "-" " " | title }}"
 thumbnail: "/images/courses/{{ .Name }}.jpg"
+featured: false  # Set to true for featured courses
 video_id: ""  # YouTube video ID
 duration: "0 minutes"
 categories: ["Uncategorized"]  # Example: ["Web Development", "Programming"]

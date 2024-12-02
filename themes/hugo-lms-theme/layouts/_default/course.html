@@ -1,0 +1,126 @@
+{{ define "main" }}
+<div class="min-h-screen bg-gray-50">
+    <!-- Course Header -->
+    <div class="bg-white border-b">
+        <div class="container mx-auto px-4 py-6">
+            <h1 class="text-4xl font-bold text-gray-900 mb-2">{{ .Title }}</h1>
+            <p class="text-lg text-gray-600 mb-4">{{ .Description }}</p>
+            
+            <!-- Course Meta Info -->
+            <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                {{ with .Params.duration }}
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{{ . }}</span>
+                </div>
+                {{ end }}
+                
+                {{ if .Params.timestamps }}
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                    </svg>
+                    <span>{{ len .Params.timestamps }} Lessons</span>
+                </div>
+                {{ end }}
+                
+                {{ range .Params.categories }}
+                <div class="flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                    </svg>
+                    <span>{{ . }}</span>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 py-6">
+            <!-- Left Column: Video and Content -->
+            <div class="lg:col-span-2">
+                <!-- Sticky Video Section -->
+                <div class="sticky top-4">
+                    <div class="bg-gray-900 rounded-lg aspect-video">
+                        <div id="player"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Column: Scrollable Timestamps -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-4 max-h-[calc(100vh-2rem)] overflow-y-auto bg-white rounded-lg shadow-sm">
+                    <div class="p-6">
+                        <h2 class="text-2xl font-semibold mb-4">Course Timeline</h2>
+                        <div class="space-y-4" id="timestamps">
+                            {{ $colors := slice "blue" "green" "purple" "yellow" "red" "indigo" "pink" "orange" }}
+                            {{ range $index, $timestamp := .Params.timestamps }}
+                            {{ $color := index $colors (mod $index (len $colors)) }}
+                            {{ $seconds := 0 }}
+                            {{ $timeparts := split $timestamp.time ":" }}
+                            {{ if eq (len $timeparts) 2 }}
+                                {{ $seconds = add (mul (float (index $timeparts 0)) 60) (float (index $timeparts 1)) }}
+                            {{ end }}
+                            <div class="border-l-4 border-{{ $color }}-500 pl-4 cursor-pointer hover:bg-gray-50 transition-colors duration-150" data-time="{{ $seconds }}">
+                                <div class="flex items-start">
+                                    <span class="text-{{ $color }}-600 font-mono">{{ $timestamp.time }}</span>
+                                    <div class="ml-4">
+                                        <h3 class="font-semibold text-gray-900">{{ $timestamp.title }}</h3>
+                                        <p class="text-sm text-gray-600 mt-1">{{ $timestamp.description }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            {{ end }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- YouTube API -->
+<script>
+    var tag = document.createElement('script');
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    var player;
+    function onYouTubeIframeAPIReady() {
+        player = new YT.Player('player', {
+            height: '100%',
+            width: '100%',
+            videoId: '{{ .Params.video_id }}',
+            playerVars: {
+                'playsinline': 1,
+                'rel': 0,
+                'modestbranding': 1
+            },
+            events: {
+                'onReady': onPlayerReady
+            }
+        });
+    }
+
+    function onPlayerReady(event) {
+        // Video is ready to play
+    }
+
+    // Add click handlers for timestamps
+    document.addEventListener('DOMContentLoaded', function() {
+        const timestamps = document.querySelectorAll('#timestamps > div');
+        timestamps.forEach(timestamp => {
+            timestamp.addEventListener('click', function() {
+                const time = parseFloat(this.dataset.time);
+                player.seekTo(time);
+                player.playVideo(); // Force video to play when timestamp is clicked
+            });
+        });
+    });
+</script>
+{{ end }}

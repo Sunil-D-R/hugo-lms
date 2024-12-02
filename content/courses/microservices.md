@@ -4,8 +4,9 @@ date: 2024-11-30
 layout: course
 description: "An exploration of the pros, cons, and complexities of microservices and their socio-technical implications."
 categories: ["Software Development", "Microservices"]
-tags: ["architecture", "system design", "technical debt"]
+tags: ["architecture", "system-design", "technical-debt", "microservices", "distributed-systems", "software-engineering", "team-organization"]
 thumbnail: "/images/courses/microservices.jpg"
+featured: true  # Set to true for featured courses
 video_id: "LltDdEw1p9w"
 duration: "14 minutes"
 timestamps:

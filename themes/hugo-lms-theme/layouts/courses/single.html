@@ -1,0 +1,56 @@
+{{ define "title" }}{{ .Title }} | {{ .Site.Title }}{{ end }}
+
+{{ define "head" }}
+<script src="https://www.youtube.com/iframe_api"></script>
+{{ end }}
+
+{{ define "main" }}
+<div class="container mx-auto px-4 py-8">
+    <div class="max-w-4xl mx-auto">
+        <!-- Course Header -->
+        <header class="mb-8">
+            <h1 class="text-4xl font-bold mb-4">{{ .Title }}</h1>
+            <div class="flex items-center text-gray-600 mb-4">
+                <span class="mr-4">{{ .Params.duration }}</span>
+                <span>{{ .Params.level }}</span>
+            </div>
+        </header>
+
+        <!-- Video Player -->
+        {{ with .Params.videoId }}
+        <div class="aspect-w-16 aspect-h-9 mb-8">
+            <div id="player" data-video-id="{{ . }}"></div>
+        </div>
+        {{ end }}
+
+        <!-- Course Content -->
+        <div class="prose max-w-none">
+            {{ .Content }}
+        </div>
+
+        <!-- Course Sections -->
+        {{ with .Params.sections }}
+        <div class="mt-8">
+            <h2 class="text-2xl font-bold mb-4">Course Sections</h2>
+            <div class="space-y-4">
+                {{ range . }}
+                <div class="border rounded-lg p-4">
+                    <h3 class="text-xl font-semibold mb-2">{{ .title }}</h3>
+                    {{ with .timestamp }}
+                    <a href="#" class="timestamp-link text-primary-600 hover:text-primary-700" data-time="{{ . }}">
+                        Jump to {{ . }}
+                    </a>
+                    {{ end }}
+                    <p class="text-gray-600 mt-2">{{ .description }}</p>
+                </div>
+                {{ end }}
+            </div>
+        </div>
+        {{ end }}
+    </div>
+</div>
+{{ end }}
+
+{{ define "scripts" }}
+<script src="{{ "js/youtube-player.js" | relURL }}" defer></script>
+{{ end }}

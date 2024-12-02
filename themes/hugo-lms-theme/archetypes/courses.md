@@ -1,0 +1,33 @@
+---
+title: "{{ replace .Name "-" " " | title }}"
+date: {{ .Date }}
+description: "A comprehensive course about {{ replace .Name "-" " " | title }}"
+thumbnail: "/images/courses/{{ .Name }}.jpg"
+featured: false  # Set to true for featured courses
+video_id: ""  # YouTube video ID
+duration: "0 minutes"
+categories: ["Uncategorized"]  # Example: ["Web Development", "Programming"]
+tags: []  # Example: ["javascript", "react", "frontend"]
+timestamps:
+  - time: "00:00"
+    title: "Introduction"
+    description: "Course overview and objectives"
+  - time: "05:00"
+    title: "Getting Started"
+    description: "Setup and prerequisites"
+draft: true
+---
+
+## Course Overview
+
+Write your course overview here.
+
+## Prerequisites
+
+List any prerequisites here.
+
+## What You'll Learn
+
+- Point 1
+- Point 2
+- Point 3

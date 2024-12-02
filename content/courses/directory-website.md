@@ -3,45 +3,57 @@ title: "Building a Directory Website Tutorial"
 date: 2024-01-01
 layout: course
 description: "Learn how to create a scalable directory website using modern tools and technologies"
+duration: "30 minutes"
+level: "Intermediate"
 categories: ["web development", "tutorial"]
+tags: ["nextjs", "mongodb", "google-cloud", "seo", "directory", "web-development"]
 thumbnail: "/images/directory-website-thumb.jpg"
-video_id: "c7qdw-Ew-cs"
-outcomes: "Learn to create a fully functional, SEO-friendly directory website for wedding services, utilizing AI and modern web development practices"
-prerequisites: "Basic understanding of web development, Next.js, MongoDB, and Google Cloud services"
-core_concepts: "Directory website setup, API integration for search results, and SEO optimization with caching and sitemaps"
-timestamps:
-  - time: "00:00"
-    title: "📚 Introduction and Video Objective"
+featured: true
+videoId: "c7qdw-Ew-cs"
+sections:
+  - title: "📚 Introduction and Video Objective"
     description: "Overview and tools introduction"
-  - time: "01:11"
-    title: "💰 Managing Costs"
-    description: "Google Cloud credits and cost management"
-  - time: "03:00"
-    title: "🔑 Keyword and Location Preparation"
+    timestamp: "00:00"
+  - title: "💰 Managing Costs"
+    description: "Cost management strategies and optimization"
+    timestamp: "01:11"
+  - title: "🔑 Keyword and Location Preparation"
     description: "CSV file generation and data preparation"
-  - time: "07:46"
-    title: "🌐 Setting Up Google Cloud and APIs"
+    timestamp: "03:00"
+  - title: "🌐 Setting Up Google Cloud and APIs"
     description: "API setup and configuration"
-  - time: "11:10"
-    title: "💾 Caching Setup with MongoDB"
+    timestamp: "07:46"
+  - title: "💾 Caching Setup with MongoDB"
     description: "Database integration and caching"
-  - time: "14:03"
-    title: "🛠️ Building the Directory Website"
+    timestamp: "11:10"
+  - title: "🛠️ Building the Directory Website"
     description: "Page generation and UI implementation"
-  - time: "23:26"
-    title: "🖥️ Debugging and Refining"
+    timestamp: "14:03"
+  - title: "🖥️ Debugging and Refining"
     description: "Error resolution and optimization"
-  - time: "29:11"
-    title: "🚀 Final Steps and Deployment"
+    timestamp: "23:26"
+  - title: "🚀 Final Steps and Deployment"
     description: "GitHub and Vercel deployment"
+    timestamp: "29:11"
 ---
 
 ## Course Overview
 
-**LEARNING SUMMARY:**  
-**Outcomes**: {{ .Params.outcomes }}  
-**Prerequisites**: {{ .Params.prerequisites }}  
-**Core Concepts**: {{ .Params.core_concepts }}
+In this comprehensive tutorial, you'll learn how to create a scalable directory website using modern tools and technologies. We'll cover everything from initial setup to final deployment, with a focus on cost optimization and performance.
+
+## Prerequisites
+
+- Basic understanding of web development
+- Familiarity with Next.js and MongoDB
+- Google Cloud account (free tier is sufficient)
+
+## What You'll Learn
+
+* Setting up a Next.js project for the directory website
+* Integrating Google Cloud APIs for location data
+* Implementing MongoDB caching for performance
+* Creating dynamic pages with SEO optimization
+* Deploying the finished site to Vercel
 
 ## Key Topics Covered
 

@@ -1,0 +1,37 @@
+{{ define "main" }}
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900 mb-4">Course Categories</h1>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 divide-x divide-y divide-gray-200">
+            {{ range .Data.Terms.ByCount }}
+            <a href="{{ .Page.Permalink }}" class="p-6 hover:bg-gray-50 transition-colors duration-200">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                        {{ .Page.Title }}
+                    </span>
+                    <span class="text-sm text-gray-500">{{ .Count }} course{{ if ne .Count 1 }}s{{ end }}</span>
+                </div>
+                {{ $courses := .Pages }}
+                {{ if gt (len $courses) 0 }}
+                <div class="text-sm text-gray-600">
+                    <p class="line-clamp-1">
+                        Latest: {{ (index $courses 0).Title }}
+                    </p>
+                </div>
+                {{ end }}
+            </a>
+            {{ end }}
+        </div>
+    </div>
+
+    <div class="mt-8">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Looking for Tags?</h2>
+        <a href="/tags" class="inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-primary-600 hover:bg-primary-700">
+            View All Tags
+        </a>
+    </div>
+</div>
+{{ end }}

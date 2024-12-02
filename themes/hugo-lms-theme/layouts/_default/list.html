@@ -1,0 +1,46 @@
+{{ define "main" }}
+<div class="container py-5">
+    <h1 class="mb-4">{{ .Title }}</h1>
+    
+    {{ if eq .Type "courses" }}
+    <div class="course-grid">
+        {{ range .Pages }}
+        <article class="course-card">
+            <div class="course-thumbnail">
+                {{ with .Params.thumbnail }}
+                    <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+                {{ else }}
+                    <img src="/images/default-course.jpg" alt="{{ $.Title }}" loading="lazy">
+                {{ end }}
+            </div>
+            <div class="course-content">
+                <h2 class="course-title">
+                    <a href="{{ .RelPermalink }}">{{ .Title }}</a>
+                </h2>
+                <p class="course-description">{{ .Description }}</p>
+                <div class="course-meta">
+                    <span class="duration">{{ .Params.duration }}</span>
+                    <span class="lessons">
+                        {{- if isset .Params "timestamps" -}}
+                            {{- len .Params.timestamps -}} lessons
+                        {{- else -}}
+                            0 lessons
+                        {{- end -}}
+                    </span>
+                </div>
+                {{ if .Params.progress }}
+                <div class="progress-bar">
+                    <div class="progress-bar-fill" style="width: {{ .Params.progress }}%"></div>
+                </div>
+                {{ end }}
+            </div>
+        </article>
+        {{ end }}
+    </div>
+    {{ else }}
+    <div class="content">
+        {{ .Content }}
+    </div>
+    {{ end }}
+</div>
+{{ end }}
